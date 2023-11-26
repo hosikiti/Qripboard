@@ -1,2 +1,2 @@
-# Qripboard
-Qripboard is a tiny note you can share by a QR code.
+# qrip
+qrip is a tiny note you can share with a QR code.
