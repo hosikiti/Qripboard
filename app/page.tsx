@@ -8,8 +8,7 @@ import { useEncryptedPageUrl } from "./hooks/useEncryptedPageUrl";
 import SmallQRCode from "./components/Elements/QRCode";
 
 export default function Home() {
-  const [encryptKey, setEncryptKey] = useState<string>("password");
-  const { pageUrl, text, setText } = useEncryptedPageUrl(encryptKey);
+  const { pageUrl, text, setText } = useEncryptedPageUrl();
 
   const handleTextChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
