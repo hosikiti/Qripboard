@@ -15,7 +15,7 @@ export default function Home() {
     setText(e.target.value);
   };
 
-  const copyToClipboard = () => {
+  const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text);
     toast.success("Copied to clipboard!");
   };
@@ -30,11 +30,16 @@ export default function Home() {
         <div className="flex flex-col gap-4">
           <div>
             <TextArea value={text} onChange={handleTextChange} />
-            <Button onClick={copyToClipboard}>Copy to Clipboard</Button>
+            <Button onClick={() => copyToClipboard(text)}>
+              Copy to Clipboard
+            </Button>
           </div>
           <div className="py-4">
             <h2 className="text-xl font-bold pb-2">Share with this QR code!</h2>
-            <div className="w-full flex flex-row justify-center">
+            <div
+              className="w-full flex flex-row justify-center"
+              onClick={() => copyToClipboard(pageUrl)}
+            >
               <SmallQRCode pageUrl={pageUrl} />
             </div>
           </div>
