@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation";
 import { ChangeEvent, use, useEffect, useMemo, useState } from "react";
 import QRCode from "react-qr-code";
 import { decrypt, encrypt } from "./util/crypt";
-import toast from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function Home() {
   const [encryptKey, setEncryptKey] = useState<string>("password");
@@ -20,8 +20,11 @@ export default function Home() {
         const decrypted = await decrypt(decodeURIComponent(text), encryptKey);
         setText(decrypted);
       }
-      const urlObj = new URL(window.location.href);
-      setSiteOrigin(urlObj.origin);
+
+      const href = window.location.href;
+      const paramPos = href.indexOf("?text");
+      const origin = paramPos >= 0 ? href.slice(0, paramPos) : href;
+      setSiteOrigin(origin);
     };
 
     decryptParam();
@@ -82,6 +85,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Toaster />
     </main>
   );
 }
