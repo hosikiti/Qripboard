@@ -2,10 +2,14 @@
 
 import { ChangeEvent, use, useEffect, useMemo, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import TextArea from "./components/Elements/TextArea";
-import Button from "./components/Elements/Button";
-import { useEncryptedPageUrl } from "./hooks/useEncryptedPageUrl";
-import SmallQRCode from "./components/Elements/QRCode";
+import TextArea from "../components/Elements/TextArea";
+import Button from "../components/Elements/Button";
+import { useEncryptedPageUrl } from "../hooks/useEncryptedPageUrl";
+import SmallQRCode from "../components/Elements/SmallQRCode";
+import { copyToClipboard } from "../util/clipboard";
+import CharacterCounter from "../components/Elements/CharacterCounter";
+
+const MAX_TEXT_LENGTH = 500;
 
 export default function Home() {
   const { pageUrl, text, setText } = useEncryptedPageUrl();
@@ -14,13 +18,8 @@ export default function Home() {
     setText(e.target.value);
   };
 
-  const copyToClipboard = (text: string) => {
-    navigator.clipboard.writeText(text);
-    toast.success("Copied to clipboard!");
-  };
-
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-4">
+    <main className="flex min-h-screen flex-col items-center justify-between p-4 dark:bg-black dark:text-white">
       <div className="text-center">
         <div className="p-4 flex flex-col gap-4">
           <h1 className="font-bold text-5xl">qrip</h1>
@@ -28,7 +27,18 @@ export default function Home() {
         </div>
         <div className="flex flex-col gap-4">
           <div>
-            <TextArea value={text} onChange={handleTextChange} />
+            <div className="flex flex-col items-end">
+              <TextArea
+                value={text}
+                onChange={handleTextChange}
+                placeholder="Enter text to share ..."
+                maxLength={MAX_TEXT_LENGTH}
+              />
+              <CharacterCounter
+                textLength={text.length}
+                maxLength={MAX_TEXT_LENGTH}
+              />
+            </div>
             <Button onClick={() => copyToClipboard(text)}>
               Copy to Clipboard
             </Button>

@@ -45,5 +45,5 @@ export const useEncryptedPageUrl = () => {
     encryptPageUrl();
   }, [text, siteOrigin]);
 
-  return { pageUrl, setPageUrl, text, setText } as const;
+  return { pageUrl, text, setText } as const;
 };
