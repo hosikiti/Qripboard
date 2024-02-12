@@ -2,6 +2,13 @@
 
 A text sharing utility with a QR code. You can share short text between any sort of devices (even between Macs and Androids), particularly useful for sharing links desktop to mobile! Your text is properly encrypted and only stored in the QR code. Furthermore, the QR code is only valid for 1 minute. After that, your text cannot be decrypted.
 
+## Technologies
+
+- [Next.js](https://nextjs.org/)
+- [React](https://reactjs.org/)
+- [TypeScript](https://www.typescriptlang.org/)
+- browser-passworder (for encryption)
+
 ## Getting Started
 
 Run the following command to install the package:
