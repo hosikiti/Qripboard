@@ -8,9 +8,9 @@ export default function CharacterCounter({
   maxLength,
 }: CharacterCounterProps) {
   return (
-    <div className="text-gray-500 dark:text-white">
+    <div className="text-gray-500 dark:text-white text-sm">
       <span>{textLength}</span>
-      {maxLength && <span>/{maxLength}</span>}
+      {maxLength && <span> / {maxLength}</span>}
     </div>
   );
 }

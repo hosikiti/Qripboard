@@ -2,6 +2,10 @@
 
 A text sharing utility with a QR code. You can share short text between any sort of devices (even between Macs and Androids), particularly useful for sharing links desktop to mobile! Your text is properly encrypted and only stored in the QR code. Furthermore, the QR code is only valid for 1 minute. After that, your text cannot be decrypted.
 
+## DEMO
+
+[https://hosikiti.github.io/qrip/](https://hosikiti.github.io/qrip/)
+
 ## Technologies
 
 - [Next.js](https://nextjs.org/)
@@ -26,4 +30,5 @@ npm run dev
 
 ## Architecture
 
-- Uses 
+- Uses a simple clean architecture.
+- `components` folder contains all the components.

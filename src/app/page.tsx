@@ -1,13 +1,13 @@
 "use client";
 
 import { ChangeEvent, use, useEffect, useMemo, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
-import TextArea from "../components/Elements/TextArea";
-import Button from "../components/Elements/Button";
+import { Toaster } from "react-hot-toast";
+import TextArea from "../components/TextArea";
+import Button from "../components/Button";
 import { useEncryptedPageUrl } from "../hooks/useEncryptedPageUrl";
-import SmallQRCode from "../components/Elements/SmallQRCode";
+import SmallQRCode from "../components/SmallQRCode";
 import { copyToClipboard } from "../util/clipboard";
-import CharacterCounter from "../components/Elements/CharacterCounter";
+import CharacterCounter from "../components/CharacterCounter";
 
 const MAX_TEXT_LENGTH = 500;
 
