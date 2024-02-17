@@ -6,7 +6,7 @@ type SmallQRCodeProps = {
 
 export default function SmallQRCode({ pageUrl }: SmallQRCodeProps) {
   return (
-    <div className="bg-white p-4 w-[70%]">
+    <div className="bg-white p-4 w-[70%] max-w-[300px]">
       <QRCode
         size={256}
         style={{
