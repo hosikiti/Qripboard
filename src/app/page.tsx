@@ -9,7 +9,7 @@ import SmallQRCode from "../components/SmallQRCode";
 import { copyToClipboard } from "../util/clipboard";
 import CharacterCounter from "../components/CharacterCounter";
 
-const MAX_TEXT_LENGTH = 500;
+const MAX_TEXT_LENGTH = 1000;
 
 export default function Home() {
   const { pageUrl, text, setText } = useEncryptedPageUrl();
