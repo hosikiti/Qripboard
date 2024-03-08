@@ -4,7 +4,7 @@ import { decryptString, encryptString } from "../util/crypt";
 import toast from "react-hot-toast";
 
 const getEncryptKey = () => {
-  const timestamp = Math.floor(+new Date() / 1000 / 60);
+  const timestamp = Math.floor(+new Date() / 1000 / 180); // Valid for around 3 minutes
   return `qrip-pwd-${timestamp}`;
 };
 
