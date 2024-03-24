@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { decryptString, encryptString } from "../util/crypt";
 import toast from "react-hot-toast";
@@ -10,6 +10,7 @@ const getEncryptKey = () => {
 
 export const useEncryptedPageUrl = () => {
   const [text, setText] = useState<string>("");
+  const timerId = useRef<NodeJS.Timeout | null>(null);
   const param = useSearchParams();
 
   useEffect(() => {
@@ -41,6 +42,14 @@ export const useEncryptedPageUrl = () => {
       const encrypted = await encryptString(text, getEncryptKey());
       const pageUrl = `${siteOrigin}/?text=${encodeURIComponent(encrypted)}`;
       setPageUrl(pageUrl);
+
+      // update page URL periodically
+      if (timerId.current) {
+        clearTimeout(timerId.current);
+      }
+      timerId.current = setTimeout(() => {
+        encryptPageUrl();
+      }, 5000);
     };
     encryptPageUrl();
   }, [text, siteOrigin]);
